@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2D Game</title>
+
+    <link rel="stylesheet" href="./style/style.css">
+</head>
+<body>
+
+    <canvas id="renderCanvas" touch-action="none"></canvas>
+    
+    <div id="gameOver">
+        <div>
+            <h1>Game Over</h1>
+            <button id="btnRestart">Replay</button>
+        </div>
+    </div>
+
+    <script src="./src/babylon.js"></script>
+    <script src="./src/babylonjs.loaders.min.js"></script>
+    <script src="./src/cannon.js"></script>
+    <script src="./src/earcut.min.js"></script>
+    <script src="./src/pep.js"></script>
+    <script src="./src/game/blocks.js"></script>
+    <script src="./src/game/environment.js"></script>
+    <script src="./main.js"></script>
+</body>
+</html>
