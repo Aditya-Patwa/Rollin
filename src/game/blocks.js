@@ -30,6 +30,8 @@ const createGroundBlock = () => {
     baseGround.position.y = -10;
     
     let groundBlock = BABYLON.Mesh.MergeMeshes([groundPlane, groundSidePlane, sidePlane2, sidePlane3, sidePlane4, baseGround], true, false, null, false, true);
+    groundBlock.physicsImpostor = new BABYLON.PhysicsImpostor(groundBlock, BABYLON.PhysicsImpostor.BoxImpostor, {mass: 0, restituion: 1});
+    
     return groundBlock;
 };
 
@@ -41,3 +43,14 @@ const waterPlane = () => {
 
     return waterPlane;
 }
+
+const skyPlatform = () => {
+  let platForm = new BABYLON.MeshBuilder.CreateBox('platForm', {height: 3, depth: 10, width: 10});
+  let platFormMat = new BABYLON.StandardMaterial('platFormMat');
+  platFormMat.diffuseTexture = new BABYLON.Texture('./media/airbase.png');
+  
+  platForm.material = platFormMat;
+  platForm.physicsImpostor = new BABYLON.PhysicsImpostor(platForm, BABYLON.PhysicsImpostor.BoxImpostor, {mass: 0, restituion: 1});
+
+  return platForm;
+};
