@@ -96,9 +96,18 @@ body {
   display: flex;
   justify-content: space-between;
   width: 100vw;
-  padding: 1rem;
+  padding: .75rem;
+}
+
+.header .score {
+  margin-top: 1.5rem;
 }
 
 .header .score h1 {
   color: white;
+}
+
+.logoImg {
+  height: 4rem;
+  width: auto;
 }
