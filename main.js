@@ -2,11 +2,28 @@ document.getElementById("btnRestart").addEventListener("click", () => {
     window.location.reload();
 });
 
+let jumpBtn = document.getElementById('jumpBtn');
+let stopBtn = document.getElementById('stopBtn');
+let leftBtn = document.getElementById('leftBtn');
+let rightBtn = document.getElementById('rightBtn');
+
+addEventListener("click", function() {
+  let el = document.body,
+    rfs = el.requestFullscreen ||
+    el.webkitRequestFullScreen ||
+    el.mozRequestFullScreen ||
+    el.msRequestFullscreen;
+
+  rfs.call(el);
+});
+
 const canvas = document.getElementById("renderCanvas");
 const engine = new BABYLON.Engine(canvas, true);
 
 let score = 0;
+let scoreDiv = document.getElementById('totalScore');
 let coins = [];
+let coinsLen;
 let lose = false;
 
 const scoreSystem = () => {
@@ -21,7 +38,19 @@ const scoreSystem = () => {
     let coin2 = goldCoin.clone();
     coin2.position = new BABYLON.Vector3(40, -20, 0);
     coins.push(coin2);
+    
+    coin2 = goldCoin.clone();
+    coin2.position = new BABYLON.Vector3(0, 5, 0);
+    coins.push(coin2);
+    
+    coin2 = goldCoin.clone();
+    coin2.position = new BABYLON.Vector3(-35, 25, 0);
+    coins.push(coin2);
 };
+
+const detectTouch = () => {
+  return ('ontouchstart' in window);
+}
 
 
 const createScene = () => {
@@ -58,33 +87,56 @@ const createScene = () => {
     let environment = createEnvironment();
     environment.physicsImpostor = new BABYLON.PhysicsImpostor(environment, BABYLON.PhysicsImpostor.BoxImpostor, {mass: 0, restituion: 1});
     
+    coinsLen = coins.length;
+   
     // Setting Up Controls for Computers and Laptops with keyboard...
     document.onkeydown = (e) => {
         if(e.keyCode == 37) {
-            char.physicsImpostor.setLinearVelocity(new BABYLON.Vector3(15, 0, 0));
+            char.physicsImpostor.setLinearVelocity(new BABYLON.Vector3(25, 0, 0));
         } else if (e.keyCode == 38) {
-            char.physicsImpostor.setLinearVelocity(new BABYLON.Vector3(0, 75, 0));
+            let xVelocity = char.physicsImpostor.getLinearVelocity().x;
+            char.physicsImpostor.setLinearVelocity(new BABYLON.Vector3(xVelocity, 60, 0));
         } else if(e.keyCode == 39) {
-            char.physicsImpostor.setLinearVelocity(new BABYLON.Vector3(-15, 0, 0));
-        } else if(e.keyCode == 32) {
+            char.physicsImpostor.setLinearVelocity(new BABYLON.Vector3(-25, 0, 0));
+        } else if(e.keyCode == 40) {
             char.physicsImpostor.setLinearVelocity(new BABYLON.Vector3(0, 0, 0));
         }
     };
 
+    
     createSky();
     createWater();
-
+    
+    if (detectTouch()) {
+      createControls(char);
+    }
+    
+    
+    stage();
+    
+    createEnemy(scene);
+    
     // Adding Functions Like collecting the coins and replay....
     scene.onBeforeRenderObservable.add(() => {
         for (let index = 0; index < coins.length; index++) {
             if(char.intersectsMesh(coins[index])) {
                 coins[index].dispose();
-                score += 1;
+                coins.splice(index, 1);
             }
         }
-        if(char.position.y <= -40) {
+        for (let index = 0; index < enemies.length; index++) {
+          if (char.intersectsMesh(enemies[index])) {
+            // char.dispose();
+            setTimeout(() => {
+              document.getElementById("gameOver").style.display = "grid";
+            }, 250);
+          }
+        }
+        if(char.position.y <= -35) {
             document.getElementById("gameOver").style.display = "grid";
         }
+        score = coinsLen - coins.length;
+        scoreDiv.innerHTML = score;
     });
 
     return scene;

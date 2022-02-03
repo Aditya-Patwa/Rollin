@@ -8,9 +8,15 @@
     <link rel="stylesheet" href="./style/style.css">
 </head>
 <body>
-
+    <header class="header">
+      <div class="logo">
+        
+      </div>
+      <div class="score">
+        <h1>Score: <span id='totalScore'></span></h1>
+      </div>
+    </header>
     <canvas id="renderCanvas" touch-action="none"></canvas>
-    
     <div id="gameOver">
         <div>
             <h1>Game Over</h1>
@@ -20,11 +26,15 @@
 
     <script src="./src/babylon.js"></script>
     <script src="./src/babylonjs.loaders.min.js"></script>
+    <script src="./src/babylon.gui.min.js"></script>
     <script src="./src/cannon.js"></script>
     <script src="./src/earcut.min.js"></script>
     <script src="./src/pep.js"></script>
     <script src="./src/game/blocks.js"></script>
     <script src="./src/game/environment.js"></script>
+    <script src="./src/game/control.js"></script>
+    <script src="./src/game/stages.js"></script>
+    <script src="./src/game/enemy.js"></script>
     <script src="./main.js"></script>
 </body>
 </html>
