@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
 }
 
 body {
@@ -29,19 +32,17 @@ body {
 }
 
 #gameOver div {
-    width: 40vw;
-    height: 40vh;
-    background-color: rgba(0, 0, 0, 0.281);
+    width: 100vw;
+    height: 50vh;
+    background-color: rgba(0, 0, 0, 0.51);
     display: grid;
     place-content: center;
     backdrop-filter: blur( 10px );
-    border-radius: 10px;
     border: 1px solid rgba(71, 71, 71, 0.432);
     box-shadow: 0px 0px 100px 20px rgba(0, 0, 0, 0.349);
 }
 
 #gameOver div h1 {
-    font-family: sans-serif;
     color: white;
     margin-bottom: 2.5rem;
 }
@@ -51,9 +52,53 @@ body {
     background-color: rgba(0, 0, 0, 0.616);
     padding: 1rem;
     backdrop-filter: blur(15px);
-    border-radius: 10px;
+    border-radius: 0px;
     border: 1px solid rgba(71, 71, 71, 0.432);
     box-shadow: 0px 0px 100px 20px rgba(0, 0, 0, 0.349);
     font-size: 1rem;
-    font-family: sans-serif;
+}
+
+.mobileControls {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  width: 100vw;
+  height: auto;
+  top: 70%;
+}
+
+.mobileControls #leftRight {
+  display: flex;
+}
+
+.mobileControls #upDown {
+  display: flex;
+}
+
+.mobileControls div {
+  padding: 1.5rem;
+}
+
+.mobileControls div button {
+  font-size: 2rem;
+}
+
+#stopBtn {
+  background: red;
+  color: white;
+  border: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.header {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  width: 100vw;
+  padding: 1rem;
+}
+
+.header .score h1 {
+  color: white;
 }
