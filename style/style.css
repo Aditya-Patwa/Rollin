@@ -111,3 +111,7 @@ body {
   height: 4rem;
   width: auto;
 }
+
+#btnRestart {
+  display: none;
+}
