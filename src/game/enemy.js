@@ -17,7 +17,7 @@ const createEnemy = (scene) => {
 
   enemies.push(Enemy1);
   
-  let enemyAnimation = new BABYLON.Animation('enemyAnimation', 'position.x', 30, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
+  let enemyAnimation = new BABYLON.Animation('enemyAnimation', 'position.x', 40, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
   
   let animationKeys = [];
   
