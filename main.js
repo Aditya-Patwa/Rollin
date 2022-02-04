@@ -1,11 +1,8 @@
-document.getElementById("btnRestart").addEventListener("click", () => {
-    window.location.reload();
-});
-
 let jumpBtn = document.getElementById('jumpBtn');
 let stopBtn = document.getElementById('stopBtn');
 let leftBtn = document.getElementById('leftBtn');
 let rightBtn = document.getElementById('rightBtn');
+let btnRestart = document.getElementById("btnRestart");
 
 addEventListener("click", function() {
   let el = document.body,
@@ -16,6 +13,8 @@ addEventListener("click", function() {
 
   rfs.call(el);
 });
+
+let gameOver = false;
 
 const canvas = document.getElementById("renderCanvas");
 const engine = new BABYLON.Engine(canvas, true);
@@ -54,7 +53,7 @@ const detectTouch = () => {
 
 
 const createScene = () => {
-    const scene = new BABYLON.Scene(engine);
+    let scene = new BABYLON.Scene(engine);
     scene.clearColor = new BABYLON.Color4(43/255, 132/255, 246/255, 1);
     const light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 10, 10), scene);
     const light2 = new BABYLON.HemisphericLight("light2", new BABYLON.Vector3(0, 10, -10), scene);
@@ -133,10 +132,15 @@ const createScene = () => {
           }
         }
         if(char.position.y <= -35) {
-            document.getElementById("gameOver").style.display = "grid";
+          gameOver = true;
+          document.getElementById("gameOver").style.display = "grid";
         }
         score = coinsLen - coins.length;
         scoreDiv.innerHTML = score;
+    });
+
+    btnRestart.addEventListener("click", () => {
+      window.location.reload();
     });
 
     return scene;
@@ -145,7 +149,7 @@ const createScene = () => {
 const scene = createScene();
 
 engine.runRenderLoop(function() {
-    scene.render();
+  scene.render();
 });
 
 window.addEventListener("resize", function () {

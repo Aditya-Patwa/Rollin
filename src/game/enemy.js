@@ -1,44 +1,23 @@
 let enemies = [];
 
-const enemy1 = () => {
-  let enemy = new BABYLON.MeshBuilder.CreatePlane('enemy', {height: 10, width: 10, sideOrientation: BABYLON.Mesh.DOUBLESIDE});
+const createEnemyMesh = () => {
+  let enemy = new BABYLON.MeshBuilder.CreatePlane('enemy', {height: 7, width: 7, sideOrientation: BABYLON.Mesh.DOUBLESIDE});
   let enemyMat = new BABYLON.StandardMaterial('enemyMat');
-  enemyMat.diffuseTexture = new BABYLON.Texture('./media/enemy1.jpg');
+  enemyMat.diffuseTexture = new BABYLON.Texture('./media/enemy.png');
   
   enemy.material = enemyMat;
-  return enemy;
-};
 
-const enemy2 = () => {
-  let enemy = new BABYLON.MeshBuilder.CreatePlane('enemy', { height: 10, width: 10, sideOrientation: BABYLON.Mesh.DOUBLESIDE });
-  let enemyMat = new BABYLON.StandardMaterial('enemyMat');
-  enemyMat.diffuseTexture = new BABYLON.Texture('./media/enemy2.jpg');
-
-  enemy.material = enemyMat;
-  return enemy;
-};
-
-const enemy3 = () => {
-  let enemy = new BABYLON.MeshBuilder.CreatePlane('enemy', { height: 10, width: 10, sideOrientation: BABYLON.Mesh.DOUBLESIDE });
-  let enemyMat = new BABYLON.StandardMaterial('enemyMat');
-  enemyMat.diffuseTexture = new BABYLON.Texture('./media/enemy3.png');
-
-  enemy.material = enemyMat;
   return enemy;
 };
 
 const createEnemy = (scene) => {
-  let Enemy1 = enemy1();
-  // let Enemy2 = enemy2();
-  // let Enemy3 = enemy3();
+  let Enemy1 = createEnemyMesh();
   
-  Enemy1.position = new BABYLON.Vector3(-35, -20, 0);
-  // Enemy2.position = new BABYLON.Vector3(-45, -20, 0);
-  // Enemy3.position = new BABYLON.Vector3(-25, -20, 0);
-  
+  Enemy1.position = new BABYLON.Vector3(-25, -21.5, 0);
+
   enemies.push(Enemy1);
   
-  let enemyAnimation = new BABYLON.Animation('enemyAnimation', 'position.x', 40, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
+  let enemyAnimation = new BABYLON.Animation('enemyAnimation', 'position.x', 30, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
   
   let animationKeys = [];
   
