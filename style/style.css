@@ -34,27 +34,28 @@ body {
 #gameOver div {
     width: 100vw;
     height: 50vh;
-    background-color: rgba(0, 0, 0, 0.51);
+    background-color: rgba(177, 175, 175, 0.24);
     display: grid;
     place-content: center;
     backdrop-filter: blur( 10px );
-    border: 1px solid rgba(71, 71, 71, 0.432);
-    box-shadow: 0px 0px 100px 20px rgba(0, 0, 0, 0.349);
+    border: 1px solid rgba(250, 249, 249, 0.144);
+    box-shadow: 0px 0px 100px 20px rgba(109, 106, 106, 0.349);
 }
 
 #gameOver div h1 {
-    color: white;
+    color: rgb(31, 31, 31);
     margin-bottom: 2.5rem;
 }
 
 #btnRestart {
     color: white;
-    background-color: rgba(0, 0, 0, 0.616);
+    background-color: rgba(29, 28, 28, 0.952);
     padding: 1rem;
     backdrop-filter: blur(15px);
     border-radius: 0px;
-    border: 1px solid rgba(71, 71, 71, 0.432);
-    box-shadow: 0px 0px 100px 20px rgba(0, 0, 0, 0.349);
+    border: 1px solid rgba(10, 10, 10, 0.178);
+    box-shadow: 3px 3px 20px 3px rgba(0, 0, 0, 0.473);
+    border-radius: 10px;
     font-size: 1rem;
 }
 
@@ -111,7 +112,7 @@ body {
   height: 4rem;
   width: auto;
 }
-
+/* 
 #btnRestart {
   display: none;
-}
+} */

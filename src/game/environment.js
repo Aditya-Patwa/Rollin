@@ -18,10 +18,21 @@ const createWater = () => {
   water.width = 10;
   water.height = 12;
   water.position = new BABYLON.Vector3(-5, -30, 0);
+
   let water2 = new BABYLON.Sprite("water", watermanager);
   water2.width = 10;
   water2.height = 12;
   water2.position = new BABYLON.Vector3(-15, -30, 0);
+
+  let lPos = -85;
+
+  for (let i = 0;  i < 9; i++) {
+    water2 = new BABYLON.Sprite("water", watermanager);
+    water2.width = 10;
+    water2.height = 12;
+    water2.position = new BABYLON.Vector3(lPos, -30, 0);
+    lPos -= 10;
+  }
 };
 
 const createEnvironment = () => {
