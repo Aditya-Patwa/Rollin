@@ -1,7 +1,7 @@
 let enemies = [];
 
 const createEnemyBase = () => {
-  let enemy = new BABYLON.MeshBuilder.CreatePlane('platForm', {height: 10, width: 10, sideOrientation: BABYLON.Mesh.DOUBLESIDE});
+  let enemy = new BABYLON.MeshBuilder.CreatePlane('platForm', {height: 8, width: 8, sideOrientation: BABYLON.Mesh.DOUBLESIDE});
   let enemyMat = new BABYLON.StandardMaterial("enemyMat");
   enemyMat.diffuseTexture = new BABYLON.Texture("./media/enemy.png");
   enemy.material = enemyMat;

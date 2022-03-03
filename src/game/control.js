@@ -12,6 +12,7 @@ const createControls = (char) => {
   
   leftBtn.onPointerDownObservable.add(function() {
     char.physicsImpostor.setLinearVelocity(new BABYLON.Vector3(25, 0, 0));
+    noOfTap = 0;
   });
   
   let rightBtn = makeThumbArea("rightBtn", 5, "blue", "blue");
@@ -25,6 +26,7 @@ const createControls = (char) => {
   
   rightBtn.onPointerDownObservable.add(function() {
     char.physicsImpostor.setLinearVelocity(new BABYLON.Vector3(-25, 0, 0));
+    noOfTap = 0;
   });
   
   let jumpBtn = makeThumbArea("jumpBtn", 5, "blue", "blue");
@@ -38,7 +40,10 @@ const createControls = (char) => {
   
   jumpBtn.onPointerDownObservable.add(function() {
     let xVelocity = char.physicsImpostor.getLinearVelocity().x;
-    char.physicsImpostor.setLinearVelocity(new BABYLON.Vector3(xVelocity, 60, 0));
+    if (noOfTap < 2) {
+      char.physicsImpostor.setLinearVelocity(new BABYLON.Vector3(xVelocity, 60, 0));
+      noOfTap++;
+    }
   });
   
   let stopBtn = makeThumbArea("stopBtn", 5, "red", "red");
@@ -53,11 +58,13 @@ const createControls = (char) => {
   stopBtn.onPointerDownObservable.add(function() {
     // console.log('stop');
     char.physicsImpostor.setLinearVelocity(new BABYLON.Vector3(0, -15, 0));
+    noOfTap = 0;
   });
   
   stopBtn.onPointerMoveObservable.add(function() {
     // console.log('stop');
     char.physicsImpostor.setLinearVelocity(new BABYLON.Vector3(0, -15, 0));
+    noOfTap = 0;
   });
   
   adt.addControl(leftBtn);

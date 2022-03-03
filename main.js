@@ -25,6 +25,8 @@ let coins = [];
 let coinsLen;
 let lose = false;
 
+let noOfTap = 0;
+
 
 const scoreSystem = () => {
 
@@ -106,13 +108,19 @@ const createScene = () => {
   document.onkeydown = (e) => {
     if (e.keyCode == 37) {
       char.physicsImpostor.setLinearVelocity(new BABYLON.Vector3(25, 0, 0));
+      noOfTap = 0;
     } else if (e.keyCode == 38) {
       let xVelocity = char.physicsImpostor.getLinearVelocity().x;
-      char.physicsImpostor.setLinearVelocity(new BABYLON.Vector3(xVelocity, 60, 0));
+      if(noOfTap < 2) {
+        char.physicsImpostor.setLinearVelocity(new BABYLON.Vector3(xVelocity, 60, 0));
+        noOfTap++;
+      }
     } else if (e.keyCode == 39) {
       char.physicsImpostor.setLinearVelocity(new BABYLON.Vector3(-25, 0, 0));
+      noOfTap = 0;
     } else if (e.keyCode == 40) {
       char.physicsImpostor.setLinearVelocity(new BABYLON.Vector3(0, 0, 0));
+      noOfTap = 0;
     }
   };
 
