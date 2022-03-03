@@ -163,13 +163,11 @@ const createScene = () => {
 let scene = createScene();
 
 btnRestart.addEventListener("click", () => {
-  scene = createScene();
-  document.getElementById("gameOver").style.display = "none";
+  window.location.reload();
 });
 
 document.getElementById("btnReplay").addEventListener("click", () => {
-  scene = createScene();
-  document.getElementById("finish").style.display = "none";
+  window.location.reload();
 });
 
 engine.runRenderLoop(function () {
