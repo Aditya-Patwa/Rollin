@@ -45,9 +45,9 @@ class Enemy {
 }
 
 const createEnemy = (scene) => {
-    let enemy = new Enemy([-25, -21.5, 0], -70, scene);
-    enemy.create();
-
-    let enemy1 = new Enemy([-175, -21.5, 0], -265, scene);
+    let enemy1 = new Enemy([-25, -21.5, 0], -70, scene);
     enemy1.create();
+
+    let enemy2 = new Enemy([-175, -21.5, 0], -265, scene);
+    enemy2.create();
 };
