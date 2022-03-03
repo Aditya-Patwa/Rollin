@@ -98,7 +98,7 @@ const createScene = () => {
   // charCamera.heightOffset = 100;
   charCamera.radius = 100;
   char.position.x = 10;
-  char.physicsImpostor = new BABYLON.PhysicsImpostor(char, BABYLON.PhysicsImpostor.SphereImpostor, { mass: .1, restituion: 1 });
+  char.physicsImpostor = new BABYLON.PhysicsImpostor(char, BABYLON.PhysicsImpostor.SphereImpostor, { mass: 100, restituion: 1 });
 
   let environment = createEnvironment();
   environment.physicsImpostor = new BABYLON.PhysicsImpostor(environment, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 0, restituion: 1 });

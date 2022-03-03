@@ -12,6 +12,8 @@ class Enemy {
     enemyMat.diffuseTexture = new BABYLON.Texture('./media/enemy.png');
     enemy.material = enemyMat;
 
+    enemy.position = new BABYLON.Vector3(0, -50, 0);
+
     enemy.position = new BABYLON.Vector3(this.initialPosition[0], this.initialPosition[1], this.initialPosition[2]);
     enemies.push(enemy);
 
