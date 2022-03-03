@@ -3,7 +3,11 @@ const stage = () => {
     [-20, 10, 0],
     [-35, 20, 0],
     [-105, -20, 0],
-    [-145, -20, 0]
+    [-145, -20, 0],
+    [-290, 10, 0],
+    [-310, 10, 0],
+    [-330, 10, 0],
+
   ];
 
   let spf = skyPlatform();
@@ -35,9 +39,17 @@ const stage = () => {
   let yPos = -20;
   for (let i = 0;  i < 3; i++) {
     ground = ground.clone();
-    ground.position.x = -280;
+    ground.position.x = -270;
     ground.position.y = yPos;
 
     yPos += 10;
+  }
+
+  xPos = -350;
+  
+  for (let i = 0;  i < 10; i++) {
+    ground = ground.clone();
+    ground.position.x = xPos;
+    xPos -= 10;
   }
 };

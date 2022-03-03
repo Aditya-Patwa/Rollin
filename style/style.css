@@ -22,7 +22,7 @@ body {
     touch-action: none;
 }
 
-#gameOver {
+#gameOver, #finish {
     position: absolute;
     z-index: 1000;
     display: none;
@@ -32,7 +32,7 @@ body {
 }
 
 
-#gameOver div {
+#gameOver div, #finish div {
     width: 100vw;
     height: 70vh;
     background-color: rgba(177, 175, 175, 0.24);
@@ -43,12 +43,12 @@ body {
     box-shadow: 0px 0px 100px 20px rgba(109, 106, 106, 0.349);
 }
 
-#gameOver div h1 {
+#gameOver div h1, #finish div h1 {
     color: rgb(31, 31, 31);
     margin-bottom: 2.5rem;
 }
 
-#btnRestart, .play-btn {
+#btnRestart, .play-btn, #btnReplay {
     color: white;
     background-color: rgba(29, 28, 28, 0.952);
     padding: 1rem;

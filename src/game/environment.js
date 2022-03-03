@@ -10,6 +10,12 @@ const createSky = () => {
   tree2.width = 15;
   tree2.height = 40;
   tree2.position = new BABYLON.Vector3(45, -12, -7);
+
+  let flagmanager = new BABYLON.SpriteManager("flag", "./media/flag.png", 1000, { width: 200, height: 400 });
+  let flag = new BABYLON.Sprite("flag", flagmanager);
+  flag.width = 10;
+  flag.height = 30;
+  flag.position = new BABYLON.Vector3(-420, 10, -7);
 };
 
 const createWater = () => {

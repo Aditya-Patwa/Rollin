@@ -50,7 +50,9 @@ const scoreSystem = () => {
     [-60, -20, 0],
     [-200, -20, 0],
     [-210, -20, 0],
-    [-220, -20, 0]
+    [-220, -20, 0],
+    [-270, 0, 0],
+    [-310, 15, 0]
   ];
 
   
@@ -73,14 +75,14 @@ const createScene = () => {
   const light2 = new BABYLON.HemisphericLight("light2", new BABYLON.Vector3(0, 10, -10), scene);
   const light3 = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, -10, 10), scene);
   const light4 = new BABYLON.HemisphericLight("light2", new BABYLON.Vector3(0, -10, -10), scene);
-  const camera = new BABYLON.ArcRotateCamera("camera", Math.PI / 2, Math.PI / 2, 300, new BABYLON.Vector3(-100, 0, 0), scene);
+  const camera = new BABYLON.ArcRotateCamera("camera", Math.PI / 2, Math.PI / 2, 500, new BABYLON.Vector3(-100, 0, 0), scene);
   // camera.attachControl(canvas, true);
 
   const charCamera = new BABYLON.FollowCamera("FollowCamera", new BABYLON.Vector3(0, 0, 150), scene);
   scene.activeCamera = charCamera;
   charCamera.rotation.y = Math.PI;
   // charCamera.attachControl(canvas, true);
-  // scene.activeCamera = camera;
+  scene.activeCamera = camera;
 
   light.intensity = 1;
   scene.enablePhysics(new BABYLON.Vector3(0, -98.1, 0), new BABYLON.CannonJSPlugin());
@@ -96,7 +98,7 @@ const createScene = () => {
   // charCamera.heightOffset = 100;
   charCamera.radius = 100;
   char.position.x = 10;
-  char.physicsImpostor = new BABYLON.PhysicsImpostor(char, BABYLON.PhysicsImpostor.SphereImpostor, { mass: 10, restituion: 1 });
+  char.physicsImpostor = new BABYLON.PhysicsImpostor(char, BABYLON.PhysicsImpostor.SphereImpostor, { mass: .1, restituion: 1 });
 
   let environment = createEnvironment();
   environment.physicsImpostor = new BABYLON.PhysicsImpostor(environment, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 0, restituion: 1 });
@@ -150,6 +152,10 @@ const createScene = () => {
       gameOver = true;
       document.getElementById("gameOver").style.display = "grid";
     }
+    if (char.position.x <= -420) {
+      char.dispose();
+      document.getElementById("finish").style.display = "grid";
+    }
     score = coinsLen - coins.length;
     scoreDiv.innerHTML = score;
   });
@@ -162,6 +168,11 @@ let scene = createScene();
 btnRestart.addEventListener("click", () => {
   scene = createScene();
   document.getElementById("gameOver").style.display = "none";
+});
+
+document.getElementById("btnReplay").addEventListener("click", () => {
+  scene = createScene();
+  document.getElementById("finish").style.display = "none";
 });
 
 engine.runRenderLoop(function () {
