@@ -82,7 +82,7 @@ const createScene = () => {
   scene.activeCamera = charCamera;
   charCamera.rotation.y = Math.PI;
   // charCamera.attachControl(canvas, true);
-  // scene.activeCamera = camera;
+  scene.activeCamera = camera;
 
   light.intensity = 1;
   scene.enablePhysics(new BABYLON.Vector3(0, -98.1, 0), new BABYLON.CannonJSPlugin());
