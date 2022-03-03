@@ -31,4 +31,13 @@ const stage = () => {
     ground.position.x = xPos;
     xPos -= 10;
   }
+
+  let yPos = -20;
+  for (let i = 0;  i < 3; i++) {
+    ground = ground.clone();
+    ground.position.x = -280;
+    ground.position.y = yPos;
+
+    yPos += 10;
+  }
 };

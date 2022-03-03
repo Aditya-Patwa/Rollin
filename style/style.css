@@ -31,9 +31,10 @@ body {
     height: 100vh;
 }
 
+
 #gameOver div {
     width: 100vw;
-    height: 50vh;
+    height: 70vh;
     background-color: rgba(177, 175, 175, 0.24);
     display: grid;
     place-content: center;
@@ -47,7 +48,7 @@ body {
     margin-bottom: 2.5rem;
 }
 
-#btnRestart {
+#btnRestart, .play-btn {
     color: white;
     background-color: rgba(29, 28, 28, 0.952);
     padding: 1rem;
@@ -116,3 +117,25 @@ body {
 #btnRestart {
   display: none;
 } */
+
+
+.full {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 200;
+  display: grid;
+  place-content: center;
+  background-color: rgba(177, 175, 175, 0.24);
+  backdrop-filter: blur( 10px );
+  box-shadow: 0px 0px 100px 20px rgba(109, 106, 106, 0.349);
+}
+
+.full h1 {
+  margin-bottom: 2.5rem;
+}
+
+.alert {
+  color: red;
+  margin-top: 1rem;
+}
