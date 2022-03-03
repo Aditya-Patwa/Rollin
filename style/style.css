@@ -124,7 +124,7 @@ body {
   height: 100vh;
   position: absolute;
   z-index: 200;
-  display: grid;
+  display: none;
   place-content: center;
   background-color: rgba(177, 175, 175, 0.24);
   backdrop-filter: blur( 10px );

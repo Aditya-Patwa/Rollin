@@ -23,27 +23,22 @@ let score = 0;
 let scoreDiv = document.getElementById('totalScore');
 let coins = [];
 let coinsLen;
-// let lose = false;
+let lose = false;
 
-class Coin{
-  constructor(position) {
-    this.position = position;
-  }
-  create() {
-    let goldCoin = new BABYLON.MeshBuilder.CreatePlane("goldCoin", { height: 5, width: 5, sideOrientation: BABYLON.Mesh.DOUBLESIDE });
-    goldCoin.rotation.y = Math.PI;
-    let goldCoinMat = new BABYLON.StandardMaterial("goldCoinMat");
-    goldCoinMat.diffuseTexture = new BABYLON.Texture("./media/goldCoin.jpg");
-    goldCoin.material = goldCoinMat;
-    goldCoin.position = new BABYLON.Vector3(this.position[0], this.position[1], this.position[2]);
-    coins.push(goldCoin);
-  }
-}
 
 const scoreSystem = () => {
 
+  let goldCoin = new BABYLON.MeshBuilder.CreatePlane("goldCoin", { height: 5, width: 5, sideOrientation: BABYLON.Mesh.DOUBLESIDE });
+  goldCoin.rotation.y = Math.PI;
+  let goldCoinMat = new BABYLON.StandardMaterial("goldCoinMat");
+  goldCoinMat.diffuseTexture = new BABYLON.Texture("./media/goldCoin.jpg");
+  goldCoin.material = goldCoinMat;
+  goldCoin.position = new BABYLON.Vector3(30, -10, 0);
+  coins.push(goldCoin);
+
+
+
   let coinsPositions = [
-    [30, -10, 0],
     [40, -20, 0],
     [0, 5, 0],
     [-35, 25, 0],
@@ -55,11 +50,12 @@ const scoreSystem = () => {
     [-310, 15, 0]
   ];
 
-  
 
-  for(let i = 0; i < coinsPositions.length; i++) {
-    let coin = new Coin(coinsPositions[i]);
-    coin.create();
+
+  for (let i = 0; i < coinsPositions.length; i++) {
+    let coin = goldCoin.clone();
+    coin.position = new BABYLON.Vector3(coinsPositions[i][0], coinsPositions[i][1], coinsPositions[i][2]);
+    coins.push(coin);
   }
 };
 
@@ -75,14 +71,14 @@ const createScene = () => {
   const light2 = new BABYLON.HemisphericLight("light2", new BABYLON.Vector3(0, 10, -10), scene);
   const light3 = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, -10, 10), scene);
   const light4 = new BABYLON.HemisphericLight("light2", new BABYLON.Vector3(0, -10, -10), scene);
-  const camera = new BABYLON.ArcRotateCamera("camera", Math.PI / 2, Math.PI / 2, 500, new BABYLON.Vector3(-100, 0, 0), scene);
+  const camera = new BABYLON.ArcRotateCamera("camera", Math.PI / 2, Math.PI / 2, 600, new BABYLON.Vector3(-100, 0, 0), scene);
   // camera.attachControl(canvas, true);
 
   const charCamera = new BABYLON.FollowCamera("FollowCamera", new BABYLON.Vector3(0, 0, 150), scene);
   scene.activeCamera = charCamera;
   charCamera.rotation.y = Math.PI;
   // charCamera.attachControl(canvas, true);
-  scene.activeCamera = camera;
+  // scene.activeCamera = camera;
 
   light.intensity = 1;
   scene.enablePhysics(new BABYLON.Vector3(0, -98.1, 0), new BABYLON.CannonJSPlugin());
@@ -99,6 +95,7 @@ const createScene = () => {
   charCamera.radius = 100;
   char.position.x = 10;
   char.physicsImpostor = new BABYLON.PhysicsImpostor(char, BABYLON.PhysicsImpostor.SphereImpostor, { mass: 100, restituion: 1 });
+  char.physicsImpostor.friction = .075;
 
   let environment = createEnvironment();
   environment.physicsImpostor = new BABYLON.PhysicsImpostor(environment, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 0, restituion: 1 });
@@ -140,8 +137,8 @@ const createScene = () => {
         coins.splice(index, 1);
       }
     }
-    for (let index = 0; index < enemies.length; index++) {
-      if (char.intersectsMesh(enemies[index])) {
+    for (let i = 0; i < enemies.length; i++) {
+      if (char.intersectsMesh(enemies[i])) {
         // char.dispose();
         setTimeout(() => {
           document.getElementById("gameOver").style.display = "grid";
