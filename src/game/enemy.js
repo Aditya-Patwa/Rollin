@@ -45,13 +45,9 @@ class Enemy {
 }
 
 const createEnemy = (scene) => {
-  let enemies = [
-    [[-25, -21.5, 0], -70],
-    [[-175, -21.5, 0], -265]
-  ];
-
-  for (let index = 0; index < enemies.length; index++) {
-    let enemy = new Enemy(enemies[index][0], enemies[index][1], scene);
+    let enemy = new Enemy([-25, -21.5, 0], -70, scene);
     enemy.create();
-  }
+
+    let enemy1 = new Enemy([-175, -21.5, 0], -265, scene);
+    enemy1.create();
 };
