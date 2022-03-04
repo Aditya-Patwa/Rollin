@@ -76,7 +76,7 @@ const createScene = () => {
   const camera = new BABYLON.ArcRotateCamera("camera", Math.PI / 2, Math.PI / 2, 600, new BABYLON.Vector3(-100, 0, 0), scene);
   // camera.attachControl(canvas, true);
 
-  const charCamera = new BABYLON.FollowCamera("FollowCamera", new BABYLON.Vector3(0, 0, 150), scene);
+  const charCamera = new BABYLON.FollowCamera("FollowCamera", new BABYLON.Vector3(0, 0, 1000), scene);
   scene.activeCamera = charCamera;
   charCamera.rotation.y = Math.PI;
   // charCamera.attachControl(canvas, true);
@@ -94,7 +94,7 @@ const createScene = () => {
 
   charCamera.lockedTarget = char;
   // charCamera.heightOffset = 100;
-  charCamera.radius = 100;
+  charCamera.radius = 150;
   char.position.x = 10;
   char.physicsImpostor = new BABYLON.PhysicsImpostor(char, BABYLON.PhysicsImpostor.SphereImpostor, { mass: 100, restituion: 1 });
   char.physicsImpostor.friction = .075;
@@ -163,6 +163,7 @@ const createScene = () => {
     }
     if (char.position.y <= -35) {
       gameOver = true;
+      char.dispose();
       document.getElementById("gameOver").style.display = "grid";
     }
     if (char.position.x <= -420) {
