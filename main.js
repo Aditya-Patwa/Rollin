@@ -115,8 +115,8 @@ const createScene = () => {
   // Setting Up Controls for Computers and Laptops with keyboard...
   document.onkeydown = (e) => {
     if (e.keyCode == 37) {
-      char.physicsImpostor.setLinearVelocity(new BABYLON.Vector3(25, 0, 0));
-      noOfTap = 0;
+      char.physicsImpostor.setLinearVelocity(new BABYLON.Vector3(30, 0, 0));
+      // noOfTap = 0;
     } else if (e.keyCode == 38) {
       let xVelocity = char.physicsImpostor.getLinearVelocity().x;
       if(noOfTap < 2) {
@@ -124,11 +124,11 @@ const createScene = () => {
         noOfTap++;
       }
     } else if (e.keyCode == 39) {
-      char.physicsImpostor.setLinearVelocity(new BABYLON.Vector3(-25, 0, 0));
-      noOfTap = 0;
+      char.physicsImpostor.setLinearVelocity(new BABYLON.Vector3(-30, 0, 0));
+      // noOfTap = 0;
     } else if (e.keyCode == 40) {
       char.physicsImpostor.setLinearVelocity(new BABYLON.Vector3(0, 0, 0));
-      noOfTap = 0;
+      // noOfTap = 0;
     }
   };
 
