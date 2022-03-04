@@ -11,8 +11,8 @@ const createControls = (char) => {
   leftBtn.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_BOTTOM;
   
   leftBtn.onPointerDownObservable.add(function() {
-    char.physicsImpostor.setLinearVelocity(new BABYLON.Vector3(25, 0, 0));
-    noOfTap = 0;
+    char.physicsImpostor.setLinearVelocity(new BABYLON.Vector3(30, 0, 0));
+    // noOfTap = 0;
   });
   
   let rightBtn = makeThumbArea("rightBtn", 5, "blue", "blue");
@@ -25,8 +25,8 @@ const createControls = (char) => {
   rightBtn.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_BOTTOM;
   
   rightBtn.onPointerDownObservable.add(function() {
-    char.physicsImpostor.setLinearVelocity(new BABYLON.Vector3(-25, 0, 0));
-    noOfTap = 0;
+    char.physicsImpostor.setLinearVelocity(new BABYLON.Vector3(-30, 0, 0));
+    // noOfTap = 0;
   });
   
   let jumpBtn = makeThumbArea("jumpBtn", 5, "blue", "blue");
@@ -58,13 +58,13 @@ const createControls = (char) => {
   stopBtn.onPointerDownObservable.add(function() {
     // console.log('stop');
     char.physicsImpostor.setLinearVelocity(new BABYLON.Vector3(0, -15, 0));
-    noOfTap = 0;
+    // noOfTap = 0;
   });
   
   stopBtn.onPointerMoveObservable.add(function() {
     // console.log('stop');
     char.physicsImpostor.setLinearVelocity(new BABYLON.Vector3(0, -15, 0));
-    noOfTap = 0;
+    // noOfTap = 0;
   });
   
   adt.addControl(leftBtn);
