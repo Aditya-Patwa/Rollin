@@ -4,15 +4,15 @@ let leftBtn = document.getElementById('leftBtn');
 let rightBtn = document.getElementById('rightBtn');
 let btnRestart = document.getElementById("btnRestart");
 
-addEventListener("click", function () {
-  let el = document.body,
-    rfs = el.requestFullscreen ||
-      el.webkitRequestFullScreen ||
-      el.mozRequestFullScreen ||
-      el.msRequestFullscreen;
+// addEventListener("click", function () {
+//   let el = document.body,
+//     rfs = el.requestFullscreen ||
+//       el.webkitRequestFullScreen ||
+//       el.mozRequestFullScreen ||
+//       el.msRequestFullscreen;
 
-  rfs.call(el);
-});
+//   rfs.call(el);
+// });
 
 let gameOver = false;
 
@@ -99,6 +99,14 @@ const createScene = () => {
   char.physicsImpostor = new BABYLON.PhysicsImpostor(char, BABYLON.PhysicsImpostor.SphereImpostor, { mass: 100, restituion: 1 });
   char.physicsImpostor.friction = .075;
 
+
+  // char.checkCollisions = true;
+  char.physicsImpostor.onCollideEvent = (collided) => {
+    noOfTap = 0;
+  }
+
+
+  
   let environment = createEnvironment();
   environment.physicsImpostor = new BABYLON.PhysicsImpostor(environment, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 0, restituion: 1 });
 
@@ -161,6 +169,7 @@ const createScene = () => {
       char.dispose();
       document.getElementById("finish").style.display = "grid";
     }
+    
     score = coinsLen - coins.length;
     scoreDiv.innerHTML = score;
   });
