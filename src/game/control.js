@@ -5,7 +5,7 @@ const createControls = (char) => {
   leftBtn.height = "50px";
   leftBtn.width = "50px";
   leftBtn.left = "20px";
-  leftBtn.top = "-40px";
+  leftBtn.top = "-70px";
   leftBtn.isPointerBlocker = true;
   leftBtn.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
   leftBtn.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_BOTTOM;
@@ -19,7 +19,7 @@ const createControls = (char) => {
   rightBtn.height = "50px";
   rightBtn.width = "50px";
   rightBtn.left = "80px";
-  rightBtn.top = "-40px";
+  rightBtn.top = "-70px";
   rightBtn.isPointerBlocker = true;
   rightBtn.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
   rightBtn.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_BOTTOM;
@@ -33,7 +33,7 @@ const createControls = (char) => {
   jumpBtn.height = "50px";
   jumpBtn.width = "50px";
   jumpBtn.left = "-20px";
-  jumpBtn.top = "-100px";
+  jumpBtn.top = "-130px";
   jumpBtn.isPointerBlocker = true;
   jumpBtn.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT;
   jumpBtn.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_BOTTOM;
@@ -50,7 +50,7 @@ const createControls = (char) => {
   stopBtn.height = "50px";
   stopBtn.width = "50px";
   stopBtn.left = "-20px";
-  stopBtn.top = "-40px";
+  stopBtn.top = "-70px";
   stopBtn.isPointerBlocker = true;
   stopBtn.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT;
   stopBtn.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_BOTTOM;
